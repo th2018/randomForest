@@ -1,0 +1,34 @@
+---
+title: "randomForest"
+author: "Tao Huang"
+date: "11/7/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Load the package
+```{r}
+library("randomForest")
+```
+
+# Load example data
+```{r}
+data(iris)
+head(iris)
+```
+
+# Implement random forest algorithm 
+```{r}
+iris.rf <- randomForest(iris[,-5], iris[,5], prox=FALSE)
+iris.rf 
+```
+
+# A data proximity matrix is an important information source in random forests based data mining. The approach is based on measuring distance between two terminal nodes in a decision tree (Englund and Verikas, 2012). 
+```{r}
+iris.rf2 <- randomForest(iris[,-5], iris[,5], prox=TRUE)
+iris.rf2
+```
+
+# REFERENCE
+Englund, Cristofer, and Antanas Verikas. "A novel approach to estimate proximity in a random forest: An exploratory study." Expert systems with applications 39.17 (2012): 13046-13050.
